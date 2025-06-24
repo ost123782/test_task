@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 const { recordEvent } = require('./aggregator');
 
 function socketClientConnector() {
-    const ws = new WebSocket('ws://localhost:8765');
+    const ws = new WebSocket(process.env.WEBSOCKET_URL);
 
     ws.on('open', () => {
         console.log('🌐 Connected to weather WebSocket server');
