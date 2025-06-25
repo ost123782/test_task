@@ -2,6 +2,7 @@
   "name": "test_task",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/ost123782/test_task#readme",
   "description": "",
   "dependencies": {
+    "apexcharts": "^4.7.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",

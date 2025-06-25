@@ -1,6 +1,6 @@
-require('dotenv').config()
+import 'dotenv/config'
 
-const WebSocket = require('ws');
+import { WebSocketServer } from 'ws'
 const PORT = process.env.WEBSOCKET_PORT;
 const INTERVAL_MS = process.env.INTERVAL_MS; // ~10 events/second
 
@@ -12,14 +12,13 @@ const cities = {
     CapeTown: [-33.92, 18.42],
 };
 
-const wss = new WebSocket.Server({ port: PORT }, () => {
+const wss = new WebSocketServer({ port: PORT }, () => {
     console.log(`🌍 Weather WebSocket server running at ws://localhost:${PORT}`);
 });
 
 wss.on('connection', (ws) => {
     console.log('🟢 Client connected');
     const interval = setInterval(async () => {
-        // console.log(0)
         const cityNames = Object.keys(cities);
         const city = cityNames[Math.floor(Math.random() * cityNames.length)];
         const [lat, lon] = cities[city];
@@ -39,7 +38,6 @@ wss.on('connection', (ws) => {
                     windspeed: weather.windspeed,
                     winddirection: weather.winddirection,
                 };
-                console.log(event)
                 ws.send(JSON.stringify(event));
                 
             }

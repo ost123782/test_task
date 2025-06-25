@@ -1,12 +1,14 @@
-require('dotenv').config()
-const express = require('express');
-const cors = require('cors');
-const { getOHLC } = require('./services/aggregator');
-const { socketClientConnector } = require('./services/socketClientConnector')
+import express from 'express';
+import cors from 'cors';
+import {socketClientConnector} from "./services/socketClientConnector.js";
+import {getOHLC} from "./services/aggregator.js";
+import 'dotenv/config'
 
 const app = express();
 const PORT = process.env.SERVER_PORT;
+
 socketClientConnector()
+
 app.use(cors());
 app.use(express.static('public'))
 
